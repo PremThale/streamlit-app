@@ -7,11 +7,13 @@ import pandas as pd
 import json
 import os
 
+
 # Load Firebase credentials from environment variable
 firebase_credentials = json.loads(os.getenv("FIREBASE_CREDENTIALS"))
 
-cred = credentials.Certificate(firebase_credentials)
-firebase_admin.initialize_app(cred)
+if not firebase_admin._apps:
+    cred = credentials.Certificate(firebase_credentials)
+    firebase_admin.initialize_app(cred)
 
 # Connect to Firestore
 db = firestore.client()
