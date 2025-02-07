@@ -1,0 +1,12 @@
+{
+    "hosting": {
+      "rewrites": [{
+        "source": "**",
+        "run": {
+          "serviceId": "streamlit-billing",
+          "region": "us-central1"
+        }
+      }]
+    }
+  }
+  
