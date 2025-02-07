@@ -4,13 +4,18 @@ from firebase_admin import credentials, firestore
 from reportlab.pdfgen import canvas
 import io
 import pandas as pd
+import json
+import os
 
-# Initialize Firebase
-if not firebase_admin._apps:
-    cred = credentials.Certificate("tweet-35ca8-firebase-adminsdk-fbsvc-8da77542ef.json")
-    firebase_admin.initialize_app(cred)
+# Load Firebase credentials from environment variable
+firebase_credentials = json.loads(os.getenv("FIREBASE_CREDENTIALS"))
 
+cred = credentials.Certificate(firebase_credentials)
+firebase_admin.initialize_app(cred)
+
+# Connect to Firestore
 db = firestore.client()
+
 
 st.title("Billing & Customer Management System")
 
