@@ -1,2 +1,3 @@
 streamlit
 firebase-admin  # (If you're using Firebase database)
+reportlab
